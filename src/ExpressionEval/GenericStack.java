@@ -22,7 +22,6 @@ public class GenericStack<E> {
         return null;
     }
 
-
     // removes the object at the top of the stack
     public E pop() {
         if (isEmpty())
@@ -39,7 +38,6 @@ public class GenericStack<E> {
         return null;
     }
 
-
     // adds an object to the top of the stack
     public void push(E o) {
         for (int i = 0; i < STACK_SIZE; i++) {
@@ -50,7 +48,6 @@ public class GenericStack<E> {
         }
         size++;
     }
-
 
     // checks if the stack is empty
     public boolean isEmpty() {

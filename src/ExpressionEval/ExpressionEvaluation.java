@@ -111,7 +111,6 @@ public class ExpressionEvaluation {
         return output;
     }
 
-
     // converts postfix expression passed in
     // returns the resulting value
     public static int evalPostFix(String postfixExpr) {
@@ -182,7 +181,6 @@ public class ExpressionEvaluation {
         return 0;
     }
 }
-
 
 // TODO 5
 /*
