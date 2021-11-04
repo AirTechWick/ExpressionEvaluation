@@ -44,12 +44,13 @@ public class ExpressionEvaluation {
     // converts infix expression passed in to postfix
     // returns the postfix expression
     public static String toPostFix(String infixExpr) {
+        // TODO 2
         String output = "";
-        char operators[] = {'+', '-', '*', '/'};
+        char[] operators = {'+', '-', '*', '/'};
         GenericStack<Character> genStack = new GenericStack<>();
         char[] cArray = infixExpr.toCharArray();
 
-        // rearranging negatives
+        // replacing negatives with tilda to show that it's a negation of a value, not subtracting a value
         for (int i = 0; i < cArray.length; i++) {
             if (cArray[i] == '*' || cArray[i] == '/') {
                 if (cArray[i + 2] == '-') {
@@ -114,6 +115,7 @@ public class ExpressionEvaluation {
     // converts postfix expression passed in
     // returns the resulting value
     public static int evalPostFix(String postfixExpr) {
+        // TODO 3
         GenericStack<Integer> genStack = new GenericStack<>();
         char[] cArray = postfixExpr.toCharArray();
 
@@ -146,15 +148,16 @@ public class ExpressionEvaluation {
 
     // TODO 4
     // add any utility methods (if any) here
+
+    // checks if the current operator has a higher priority than the stack peek operator
     private static boolean currHasPrecedence(char currentOperator, char stackOperator) {
         if (currentOperator == '+' || currentOperator == '-') {
-            if (stackOperator == '*' || stackOperator == '/' || stackOperator == '~') {
-                return false;
-            }
+            return stackOperator != '*' && stackOperator != '/' && stackOperator != '~';
         }
         return true;
     }
 
+    // searches for a char in the given array and returns if it is found or not
     private static boolean charInArray(char charToSearch, char[] charArray) {
         for (char token : charArray) {
             if (token == charToSearch) {
@@ -164,6 +167,7 @@ public class ExpressionEvaluation {
         return false;
     }
 
+    // evaluates a given char operator and returns a result from the operation
     private static int evaluate(char operator, int firstNumber, int secondNumber) {
         switch (operator) {
             case '+':
@@ -182,5 +186,16 @@ public class ExpressionEvaluation {
 
 // TODO 5
 /*
-Paste output here
+InFix:   2 + ( 4 + 3 * 2 + 1 ) / 3
+PostFix: 2432*+1+3/+
+Result:  5
+InFix:   3 * ( 14 + 5 ) / 2
+PostFix: 3145+2/*
+Result:  4
+InFix:   2 * 3 / ( 2 - 1 ) + 5 * -3
+PostFix: 2321-/*53~*+
+Result:  -9
+InFix:   7 - ( 2 * 3 + 5 ) * ( 8 - 4 / 2 )
+PostFix: 723*5+842/-*-
+Result:  -59
 */

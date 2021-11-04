@@ -1,15 +1,15 @@
 package ExpressionEval;
 
 public class GenericStack<E> {
-    private int STACK_SIZE = 10;
+    private final int STACK_SIZE = 10;
 
-    private E[] list = (E[]) new Object[STACK_SIZE];
+    private final E[] list = (E[]) new Object[STACK_SIZE];
 
     public int getSize(){
         return STACK_SIZE;
     }
 
-
+    // returns the object at the top of the stack
     public E peek(){
         for (int i = 0; i < STACK_SIZE; i++) {
             if (list[i + 1] == null) // if next number in the list is null then return current number at the top of stack
@@ -20,6 +20,8 @@ public class GenericStack<E> {
         return null;
     }
 
+
+    // removes the object at the top of the stack
     public E pop(){
         if (isEmpty())
             return null;
@@ -36,6 +38,8 @@ public class GenericStack<E> {
         return null;
     }
 
+
+    // adds an object to the top of the stack
     public void push(E o){
         for (int i = 0; i < STACK_SIZE; i++) {
             if (list[i] == null) {
@@ -45,10 +49,9 @@ public class GenericStack<E> {
         }
     }
 
+
+    // checks if the stack is empty
     public boolean isEmpty(){
-        if (list[0] == null) {
-            return true;
-        }
-        return false;
+        return list[0] == null;
     }
 }
